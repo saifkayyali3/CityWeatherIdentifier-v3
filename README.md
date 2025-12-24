@@ -45,8 +45,8 @@ Follow these steps to run the project locally:
 
 # 1. Clone the repository and enter:
 ```bash
-git clone https://github.com/saifkayyali3/CityWeatherIdentifier.git
-cd CityWeatherIdentifier
+git clone https://github.com/saifkayyali3/CityWeatherIdentifier-v3.git
+cd CityWeatherIdentifier-v3
 ```
 # 2. Make a virtual environment
 ```bash
@@ -71,6 +71,6 @@ python main.py
 This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
 
 ## Author
-
 **Saif Kayyali**
+yya
 
