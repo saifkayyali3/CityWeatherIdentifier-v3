@@ -6,11 +6,20 @@ A web app that allows users to find detailed weather information for cities acro
 
 ---
 
+## ⏳ Project History
+This web app is the final version of a three-part evolution:
+1. **[Jordan Weather Legacy v1](https://github.com/saifkayyali3/JordanWeatherIdentifier-v1)** - The Prototype: First Python GUI using static File I/O.
+2. **[City Weather Identifier v2](https://github.com/saifkayyali3/City-Weather-Identifier-v2)** - Data Viz: Desktop app with live API integration and Seaborn/Matplotlib graphs. 
+3. **City Weather Identifier v3 (This Repo)** - Full-Stack: Responsive web app with Flask backend and Pandas data processing.
+
+---
+
 ## Features
 
 - Retrieve current temperature or hourly/daily weather statistics for any city.
-- Only valid cities are recognized, avoiding towns, villages, or regions.
+- Data Granularity: Unlike v2's weekly overview, v3 provides high-resolution hourly data using Pandas for backend processing
 - Responsive design – works on mobile, tablet, and desktop.
+- Smart Validation: Filters out non-city regions to ensure data accuracy.
 
 ---
 
