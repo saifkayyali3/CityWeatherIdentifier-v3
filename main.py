@@ -1,15 +1,16 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 from geopy.geocoders import Nominatim
 from datetime import datetime, timedelta, timezone
 import requests
 import pandas as pd
 from timezonefinder import TimezoneFinder
 from zoneinfo import ZoneInfo
+import os
 
 app = Flask(__name__)
 
 weather_options = {
-    "Current Temperature": ["temperature_2m"],
+    "Current Temperature": ["temperature_2m", "apparent_temperature"],
     "Temperature (Across week)": ["temperature_2m_max", "temperature_2m_min"],
     "Rain (Hourly)": ["rain"],
     "Wind Speed (Hourly)": ["windspeed_10m"],
@@ -108,9 +109,9 @@ def fetch_hourly_data(lat, lon, variables, hours=24):
     return None
 
 def fetch_current_temperature(lat, lon):
-    data = fetch_hourly_data(lat, lon, ["temperature_2m"], hours=1)
-    if data and "temperature_2m" in data:
-        return data["temperature_2m"][0]
+    data = fetch_hourly_data(lat, lon, ["temperature_2m", "apparent_temperature"], hours=1)
+    if data and "temperature_2m" in data and "apparent_temperature" in data:
+        return data["temperature_2m"][0], data["apparent_temperature"][0]
     return None
 
 @app.route('/', methods=["POST", "GET"])
@@ -131,9 +132,14 @@ def index():
             else:
                 name = city.title()
                 if option == "Current Temperature":
-                    temp = fetch_current_temperature(lat, lon)
+                    temp, apparent = fetch_current_temperature(lat, lon)
                     if temp is not None:
-                        table_html = f"<p>Current Temperature in {name}: {temp}°C</p>"
+                        table_html = (
+                            f"<div class='alert alert-info' style='text-align: center; border-radius: 15px;'>"
+                            f"<h4>Current weather in {name}:</h4>"
+                            f"<p style='font-size: 1.5rem; margin-bottom: 0;'><strong>{temp}°C</strong></p>"
+                            f"<p style='font-size: 1rem; color: #555;'>Feels like: <strong>{apparent}°C</strong></p>"
+                            f"</div>")
                     else:
                         error = "Current temperature not available."
                 elif "Hourly" in option:
@@ -174,6 +180,16 @@ def index():
                     else:
                         error = "Failed to retrieve weather data."
     return render_template("index.html", options=weather_options.keys(), table_html=table_html, error=error, name=name)
+
+@app.route('/robots.txt')
+def robots_txt():
+    # This sends the file directly from your root directory
+    return send_from_directory(os.getcwd(), 'robots.txt')
+
+@app.route('/sitemap.xml')
+def sitemap_xml():
+    return send_from_directory(os.getcwd(), 'sitemap.xml')
+
 
 if __name__ == "__main__":
     app.run(debug=True)

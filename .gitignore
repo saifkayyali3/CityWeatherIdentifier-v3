@@ -1,3 +1,17 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# System files
+.DS_Store
+Thumbs.db
 desktop.ini
-.vercel
-"desktop.ini" 
+
+# IDE files
+.vscode/
+

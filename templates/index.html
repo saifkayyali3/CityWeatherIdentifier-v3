@@ -2,9 +2,12 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="keywords" content="weather, city weather, global cities, temperature, precipitation, forecast, weather identifier">
+        <meta name="keywords" content="weather, city weather, global cities, temperature, precipitation, forecast, weather identifier, wind speed">
         <meta name="author" content="Saif Kayyali">
-        <meta name="description" content="A website that allows users to find the weather details of cities across the globe.">
+        <meta name="description" content="A website that allows users to find detailed weather information of cities across the globe based on their preference.">
+        <meta name="google-site-verification" content="9CFF2hHOkAER-r2te3p3Vhx6zA2YaOnGzuvKdowu51E" />
+        <link rel="canonical" href="https://city-weather-identifier.vercel.app/" />
+
         <title>City Weather Identifier</title>
         
         <link rel="icon" href="{{ url_for('static', filename='images/CityWeatherIdentifier.png') }}" type="image/png">
@@ -38,7 +41,7 @@
       </div>
       <div id="textarea">
         {% if name %} 
-        <h3 id="cityname">City name: {{name}}</h3>
+        <h3 id="cityname">City name: <span style="text-decoration: underline;"> {{name}} </span></h3>
         {% endif %}
 
         {% if table_html %}
