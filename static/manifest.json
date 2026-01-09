@@ -16,6 +16,11 @@
       "src": "images/CityWeatherIdentifier.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "images/CityWeatherIdentifier.png",
+      "sizes": "144x144",
+      "type": "image/png"
     }
   ]
 }
