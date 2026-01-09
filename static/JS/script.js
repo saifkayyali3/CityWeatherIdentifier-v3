@@ -7,9 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const text = submit.textContent; 
 
-
-
-
     form.addEventListener('submit', (event) => {
         const city = Input.value.trim();
 
@@ -30,4 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
+document.addEventListener("DOMContentLoaded", function(){
+    const table=document.getElementById("table");
+    if (table){
+        table.scrollIntoView({behavior:"smooth"});
+    }
+});

@@ -13,10 +13,15 @@ weather_options = {
     "Current Temperature": ["temperature_2m", "apparent_temperature"],
     "Temperature (Across week)": ["temperature_2m_max", "temperature_2m_min"],
     "Rain (Hourly)": ["rain"],
+    "Rain (Across Week)": ["rain_sum"],
     "Wind Speed (Hourly)": ["windspeed_10m"],
+    "Wind Speed (Across Week)": ["windspeed_10m_max", "windspeed_10m_min"],
     "Snowfall (Hourly)": ["snowfall"],
+    "Snowfall (Across Week)": ["snowfall_sum"],
     "Precipitation (Hourly)": ["precipitation"],
-    "Showers (Hourly)": ["showers"]
+    "Precipitation (Across Week)": ["precipitation_sum"],
+    "Showers (Hourly)": ["showers"],
+    "Showers (Across Week)": ["showers_sum"],
 }
 
 abv_map = {
@@ -173,6 +178,12 @@ def index():
                         rename = {
                             "temperature_2m_max": "Maximum Temperature (°C)",
                             "temperature_2m_min": "Minimum Temperature (°C)",
+                            "rain_sum": "Total Rain (mm)",
+                            "windspeed_10m_max": "Maximum Wind Speed (km/h)",
+                            "windspeed_10m_min": "Minimum Wind Speed (km/h)",
+                            "snowfall_sum": "Total Snowfall (mm)",
+                            "precipitation_sum": "Total Precipitation (mm)",
+                            "showers_sum": "Total Showers (mm)",
                             "time": "Date"
                         }
                         df.rename(columns=rename, inplace=True)

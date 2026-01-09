@@ -1,0 +1,21 @@
+{
+  "name": "City Weather Identifier",
+  "short_name": "CWeatherID",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111111",
+  "theme_color": "#0f4",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "images/CityWeatherIdentifier.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/CityWeatherIdentifier.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
